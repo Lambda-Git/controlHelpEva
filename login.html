@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="pragma" content="no-cache">
+		<!-- HTTP 1.0 -->
+		<meta http-equiv="cache-control" content="no-cache">
+		<!-- Prevent caching at the proxy server -->
+		<meta http-equiv="expires" content="0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>多维心理 |登录</title>
+		<link href="./css/mui.min.css" rel="stylesheet" />
+		<link href="./css/common.css" rel="stylesheet"  />
+        <!--动画库引入 -->
+		<link href="./css/animate.css" rel="stylesheet"  />
+		<link rel="stylesheet" type="text/css" href="./css/icons-extra.css" />
+		<style>
+            .container {
+                padding: 20px 20px 1px 20px;
+            }
+            .titlePng {
+                width: 100%;
+            }
+            .bgImg {
+                width: 65%;
+            }
+            .mui-col-sm-2 {
+                text-align: center;
+            }
+            h3 {
+                margin-top: -57px;
+                color: #5b9bd5;
+                font-size: 23px;
+            }
+            .mui-input-row .mui-input-clear~.mui-icon-clear, .mui-input-row .mui-input-password~.mui-icon-eye {
+                top: 15px;
+                right: 2px;
+            }
+            .loginInput {
+                height: 65px;
+            }
+            @-webkit-keyframes rotation{
+                from {-webkit-transform: rotate(0deg);}
+                to {-webkit-transform: rotate(360deg);}
+            }
+            .an{
+                -webkit-transform: rotate(360deg);
+                animation: rotation 3s linear infinite;
+                -moz-animation: rotation 3s linear infinite;
+                -webkit-animation: rotation 3s linear infinite;
+                -o-animation: rotation 3s linear infinite;
+            }
+            .mui-popover {
+                position: fixed;
+                width: 85%;
+                border-radius: 20px;
+                left: 50%;
+                top: 50%;
+                margin: 0 auto;
+                z-index: 9999;
+                background-color: #fff;
+                -webkit-transform: translateX(-50%) translateY(-50%);
+                -moz-transform: translateX(-50%) translateY(-50%);
+                -ms-transform: translateX(-50%) translateY(-50%);
+                transform: translateX(-50%) translateY(-50%);
+            }
+
+            #version {
+                margin-top: 20px;
+                font-size: 18px;
+            }
+
+            .check {
+                margin-top: 60px;
+            }
+
+            .check li {
+                padding: 16px 11px;
+            }
+
+            .check a {
+                font-size: 18px;
+                color: #18b5e4!important;
+            }
+
+            .check p {
+                font-size: 18px;
+                margin-top: 5px;
+            }
+
+            progress {
+                width: 80%;
+                border-radius: 2px;
+                border-left: 1px #ccc solid;
+                border-right: 1px #ccc solid;
+                border-top: 1px #aaa solid;
+                background-color: #eee;
+            }
+
+            progress::-webkit-progress-bar {
+                background-color: #d7d7d7;
+            }
+
+            progress::-webkit-progress-value {
+                background-color: #aadd6a;
+            }
+
+            .updateProDiv {
+                display: none;
+                color: #18b5e4;
+            }
+		</style>
+	</head>
+
+	<body>
+        <div class="container">
+            <div class="mui-row" style="margin-bottom: 5px">
+                <div class="mui-col-sm-3" style="text-align: right">
+                    <!--<img class="an" src="image/logo.png" style="width: 40%"/>-->
+                </div>
+                <div class="mui-col-sm-6" style="text-align: center">
+                    <img class="titlePng animated  bounceInDown"  src="image/title.png" />
+                </div>
+                <div class="mui-col-sm-3" style="text-align: right">
+                    <button id="updateButton" type="button" class="mui-btn mui-btn-warning" style="margin-top: 20px;">更新</button>
+                	<button id="logout" type="button" class="mui-btn mui-btn-warning" style="margin-top: 20px;">退出</button>
+                </div>
+            </div>
+            <div class="mui-row">
+                <div class="mui-col-sm-2">
+                    <img class="bgImg animated  bounceInDown" src="image/login/2.png" style="margin-top: -10px;">
+                </div>
+                <div class="mui-col-sm-2">
+                    <img class="bgImg animated  bounceInDown" src="image/login/3.png" style="margin-top: 35px;">
+                </div>
+                <div class="mui-col-sm-4">
+                    <div style="font-size: 30px;font-weight:600;">
+                        <div class="mui-input-row loginInput" >
+                            <input id='account' style="font-size: 22px;height: 55px;border-radius: 12px;background: #f8cbad;" type="text" class="mui-input-clear mui-input"  placeholder="请输入用户名">
+                        </div>
+                        <div class="mui-input-row loginInput">
+                            <input id="password" style="font-size: 22px;height: 55px;border-radius: 12px;background: #98e386;" type="password" class="mui-input-password" placeholder="请输入密码">
+                        </div>
+                    </div>
+                </div>
+                <div class="mui-col-sm-2">
+                    <img class="bgImg animated  bounceInDown" src="image/login/4.png" style="margin-top: 10px;">
+                </div>
+                <div class="mui-col-sm-2">
+                    <img class="bgImg animated  bounceInDown" src="image/login/5.png" style="margin-top: 35px;">
+                </div>
+            </div>
+            <div class="mui-row">
+                <div class="mui-col-sm-2">
+                    <img class="bgImg animated  bounceInDown" src="image/login/6.png" style="margin-top: -10px">
+                </div>
+                <div class="mui-col-sm-2" style="text-align: right;">
+                    <img class="bgImg animated  bounceInDown" src="image/login/7.png" style="margin-top: 10px">
+                </div>
+                <div class="mui-col-sm-4" style="text-align: center">
+                    <div id="login">
+                        <img class="" src="image/login/8.png" style="width: 80px;height: 80px"><h3>登录</h3>
+                    </div>
+                </div>
+                <div class="mui-col-sm-2" style="text-align: left;">
+                    <img class="bgImg animated  bounceInDown" src="image/login/9.png">
+                </div>
+                <div class="mui-col-sm-2">
+                    <img class="bgImg animated  bounceInDown" src="image/login/10.png">
+                </div>
+            </div>
+        </div>
+        <!--更新弹出框-->
+        <div id="pop" class="mui-popover" style="padding: 20px;">
+            <div class="mui-scroll">
+                <div class="login-img">
+                    <p id="version">当前APP版本号:</p>
+                </div>
+            </div>
+
+            <ul class="mui-table-view check" id="check">
+                <li class="mui-table-view-cell">
+                    <div class="updateProDiv">更新进度:
+                        <progress value="" max="" id="proDownFile"></progress>
+                    </div>
+                    <a href="#" id="update" class="mui-navigate-right">点击检查更新</a>
+                </li>
+            </ul>
+        </div>
+
+	</body>
+
+	<script src="./js/mui.min.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/jquery.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+            var clickMusic = new Audio('mp3/click.mp3');
+
+            /** input框键盘不消失问题 **/
+            $("input").blur(function(){
+                $(this)[0].scrollIntoView(true);
+            })
+            //监听键盘收起事件
+            var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+            $(window).on('resize', function (e) {
+                var nowClientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+                if (clientHeight > nowClientHeight) {
+                    //键盘弹出的事件处理
+                }else {
+                    $("input").blur();
+                    //键盘收起的事件处理
+                }
+            });
+            /** end **/
+
+                //更新弹出框
+            var pop = document.getElementById("pop");
+            var mask = mui.createMask(function () {
+                pop.classList.remove('mui-active');
+            });
+            mui('#updateButton')[0].addEventListener('tap', function () {
+                mask.show();//显示遮罩
+                pop.classList.add('mui-active');
+            })
+            var wgtVer = null;
+
+            function plusReady() { // 获取本地应用资源版本号
+                plus.runtime.getProperty(plus.runtime.appid, function (inf) {
+                    wgtVer = inf.version;
+                    version.innerHTML = '当前应用版本：' + wgtVer;
+                });
+            }
+            if (window.plus) {
+                plusReady();
+            } else {
+                document.addEventListener('plusready', plusReady, false);
+            }
+            var ver;
+            //休眠方法
+            function sleep(numberMillis) {
+                var now = new Date();
+                var exitTime = now.getTime() + numberMillis;
+                while (true) {
+                    now = new Date();
+                    if (now.getTime() > exitTime)
+                        return;
+                }
+            }
+            mui('.mui-table-view-cell').on('click', '#update', function () {
+                plus.runtime.getProperty(plus.runtime.appid, function (inf) {
+                    ver = inf.version;
+                    $('.updateProDiv').css('display', 'block');
+                    $('#update').css('display', 'none');
+                    var wgtUrl = "http://www.dweipsy.com/mathbrain/Users/update/controlHelpEva/H5ABA7105.wgt";
+                    var dtask = plus.downloader.createDownload(wgtUrl, {}, function (d, status) {
+                        if (status === 200) {
+                            clearInterval(i);
+                            plus.nativeUI.toast("正在准备环境，请稍后...！");
+                            sleep(1000);
+                            $('#update').css('display', 'block');
+                            $('.updateProDiv').css('display', 'none');
+                            installWgt(d.filename); // 安装wgt包
+                        } else {
+                            plus.nativeUI.alert("下载更新包失败！");
+                        }
+                    });
+                    dtask.start();
+                    var i = setInterval(function () {
+                        var totalSize = dtask.totalSize;
+                        var downloadedSize = dtask.downloadedSize;
+                        $('#proDownFile').attr('value', downloadedSize);
+                        $('#proDownFile').attr('max', totalSize);
+                    }, 100); //1000为1秒钟
+                });
+            });
+            // 更新应用资源
+            function installWgt(path) {
+                plus.nativeUI.showWaiting("安装中...");
+                plus.runtime.install(path, {}, function () {
+                    plus.nativeUI.closeWaiting();
+                    plus.nativeUI.alert("应用资源已经更新至最新版本！", function () {
+                        plus.runtime.restart();
+                    });
+                }, function (e) {
+                    plus.nativeUI.closeWaiting();
+                    plus.nativeUI.alert("安装更新文件失败["+e.code+"]："+e.message);
+                });
+            }
+
+
+            mui('#account')[0].value = 'ceshi4';
+            mui('#password')[0].value = '123456';
+            /*按钮加载效果*/
+            mui(document.body).on('tap', '.mui-btn', function(e) {
+                mui(this).button('loading');
+                setTimeout(function() {
+                    mui(this).button('reset');
+                }.bind(this), 2000);
+            });
+            mui(document.body).on('tap', '#login', function(e) {
+                clickMusic.play();
+                setTimeout(function(){
+                    if(mui('#account')[0].value && mui('#password')[0].value){
+                        //调用登录接口
+                        var userInfo = {
+                            userName: mui('#account')[0].value,
+                            password: mui('#password')[0].value
+                        }
+                        var loginData = {
+                            clazz: 'com.lattice.action.proxy.thirdparty.login.ThirdPartyLoginProxy',
+                            service: 'login',
+                            args: JSON.stringify(userInfo)
+                        };
+                        $.ajax({
+                            type: 'POST',
+                            url: 'http://www.dweipsy.com/lattice/CommonActionProxy',
+                            data: loginData,
+                            dataType: 'json',
+                            success: function (data) {
+                                if (data.flag === 'failed') {
+                                    //登录失败--账号密码不对
+                                    mui.toast('错误的用户名或密码!',{ duration:'long', type:'div' })
+                                } else if (data.flag === 'success') {
+                                    //存入缓存
+                                    localStorage.setItem('userInfo',JSON.stringify(userInfo))
+                                    localStorage.setItem('access_token',data.access_token)
+                                    localStorage.setItem('uid',data.uid)
+                                    localStorage.setItem('userType',data.userType)
+                                    //登录成功--跳转
+                                    mui.openWindow({
+                                        url: 'index.html',
+                                        createNew: true,
+                                        styles: {
+                                            cachemode:"noCache",
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }else{
+                        mui.toast('用户名和密码不能为空!',{ duration:'long', type:'div' })
+                    }
+                }, 500);
+            });
+
+	</script>
+
+</html>
