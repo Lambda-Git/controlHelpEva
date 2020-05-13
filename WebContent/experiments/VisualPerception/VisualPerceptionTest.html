@@ -97,7 +97,7 @@
                     <td align=center height=200px colspan=2>
 								<span id="loading" class="loading">
 									<img name="imageObj" id="imageObj" src="../../images/black_toosmall.jpg"/>
-									<br/>Uploading
+									<br/>Uploading...
 								</span>
                     </td>
                     <td align=center height=80px>
@@ -146,7 +146,7 @@
     <span id="myCanvasSpan" class="myCanvasSpan"></span>
 </div>
 
-<div id="feed_back_div" style="display:none;" class="stroopnum_relax_tips_div">
+<div id="feed_back_div" style="display:none;text-align: center" class="stroopnum_relax_tips_div">
     <span id="message" class="message"></span>
     <span><img name="messageimageObj" id="messageimageObj" src="../../images/black_toosmall.jpg"/></span>
 </div>
@@ -705,9 +705,11 @@
 
         document.getElementById("feed_back_div").style.display = "block";
         if (all_a[index].user_result[current_index - 1] == all_a[index].correct_result_array[current_index - 1]) {
-
+            /*答对*/
+            document.getElementById("message").innerHTML = "选择正确！能否再快一些!";
         } else {
-
+            /*答错*/
+            document.getElementById("message").innerHTML = "选择错误!";
         }
         //测试结束--已经打印出结果 --隐藏
         document.getElementById("button_pq").style.display = "none";
