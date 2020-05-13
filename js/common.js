@@ -77,17 +77,14 @@ function postFormInputData() {
     $('.formalResult').removeClass('active'); //隐藏 打印结果form表单
     document.getElementById("button_pq").style.display = "none"; //隐藏 左右button
     var formData = getFormData('result');
-    //本地测试账号-对应孙老师
-   /* formData.userName = '18210119894001';
-    formData.password = 'password';*/
-    //正式环境
-    formData.userName = '105988';
-    formData.password = '123456';
+    formData.userName = userInfo.userName;
+    formData.password = userInfo.password;
+    formData.projectid = 1812;
+    formData.access_token =  localStorage.getItem('access_token');
     formData.type = 'formal';
     $.ajax({
         type: 'POST',
-        url: 'http://www.dweipsy.com/lattice/CommonActionProxy', //正式环境 -- 不带token
-        // url: 'http://192.168.43.175/lattice/CommonActionProxy', //本地测试
+        url: 'http://www.dweipsy.com/lattice/CommonActionProxy', //正式环境 -- 带token
         data: {
             clazz: 'com.lattice.action.OPES.OPESResultProxy',
             service: 'postResults',

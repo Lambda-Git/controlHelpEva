@@ -186,7 +186,7 @@
         $('.left').css('display','block');
     }
     if( type == 1) {
-        $('h3').text('词语辨析测验');
+        $('h3').text('快速呈现下的视知觉');
         $('.clickToPractice img').attr('src','../image/type_1/1_.png');
         $('.clickToFormal img').attr('src','../image/type_1/1.png');
     } else if (type == 2) {
@@ -211,8 +211,8 @@
         clickMusic.play();
         if(type ==1 ) {
             setTimeout(function(){
-                mui.openWindow({ //词语辨析(练习)
-                    url: '../WebContent/experiments/wordassay/index.html?type=1',
+                mui.openWindow({ //快速呈现下的视知觉(练习)
+                    url: '../WebContent/experiments/VisualPerception/index.html?type=1',
                     createNew: true,
                     styles: {
                         cachemode:"noCache",
@@ -269,8 +269,8 @@
         if(practice == 'true') {
             if(type == 1) {
                 setTimeout(function(){
-                    mui.openWindow({ //词语辨析(正式)
-                        url: '../WebContent/experiments/wordassay/index.html?type=2',
+                    mui.openWindow({ //快速呈现下的视知觉(正式)
+                        url: '../WebContent/experiments/VisualPerception/index.html?type=2',
                         createNew: true,
                         styles: {
                             cachemode:"noCache",
