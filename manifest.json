@@ -3,8 +3,8 @@
     "id" : "H5ABA7105", /*应用的标识，创建应用时自动生成，勿手动修改*/
     "name" : "五维学习能力诊断（主试控制）", /*应用名称，程序桌面图标名称*/
     "version" : {
-        "name" : "2020.05.13", /*应用版本名称*/
-        "code" : 20200513
+        "name" : "2020.05.14", /*应用版本名称*/
+        "code" : 20200514
     },
     "description" : "五维学习能力诊断（主试控制）", /*应用描述信息*/
     "icons" : {
@@ -202,7 +202,9 @@
                         "retina55l" : "image/appStart.png",
                         "retina35" : "image/appStart.png",
                         "iphonex" : "image/appStart.png",
-                        "iphonexl" : "image/appStart.png"
+                        "iphonexl" : "image/appStart.png",
+                        "portrait-896h@3x" : "image/appStart.png",
+                        "landscape-896h@2x" : "image/appStart.png"
                     },
                     "ipad" : {
                         "portrait" : "image/appStart.png", /*iPad竖屏启动图片，分辨率：768x1004*/
@@ -212,7 +214,8 @@
                         "portrait7" : "image/appStart.png", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
                         "portrait-retina7" : "image/appStart.png", /*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
                         "landscape7" : "image/appStart.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
-                        "landscape-retina7" : "image/appStart.png"
+                        "landscape-retina7" : "image/appStart.png",
+                        "portrait-1112h@2x" : "image/appStart.png"
                     }
                 },
                 "android" : {
