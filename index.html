@@ -19,18 +19,14 @@
 		<link rel="stylesheet" type="text/css" href="./css/icons-extra.css" />
 		<style>
 			.titlePng {
-				width: 85%;
+				width: 50px;
+				margin-bottom: -18px;
+				margin-right: -10px;
 			}
 			.curUser {
 				font-weight: 600;
-				color: #fffaea;
-				font-size: 12px;
-				margin: auto;
-				position: absolute;
-				top: 10px;
-				left: 0;
-				bottom: 0;
-				right: 0;
+				color: #f0ad4e;
+				font-size: 18px;
 			}
 			p.type_title {
                 color: #00c1de;
@@ -75,8 +71,7 @@
 			<div class="mui-row title" style="margin: 16px 0px 40px">
 				<div class="mui-col-sm-3" style="text-align: center;"></div>
 				<div class="mui-col-sm-6" style="text-align: center;">
-					<p class="curUser"></p>
-					<img class="titlePng"  src="image/welcome.png" />
+					<img class="titlePng"  src="image/welcome.png" /><span class="curUser"></span>
 				</div>
 				<div class="mui-col-sm-3" style="text-align: center;">
 					<img class="goLeft" onclick="goNext('login.html')" src="image/icon/goLeft.png" />
@@ -111,8 +106,6 @@
     <script src="./js/common.js"></script>
 	<script type="text/javascript" charset="utf-8">
             var clickMusic = new Audio('mp3/click.mp3');
-			$('.curUser').html('欢迎' +userInfo.userName+ '同学');
-
             //取得用户信息接口
             var userData_ = {
                 uid:localStorage.getItem('uid'),
@@ -131,7 +124,7 @@
                 dataType: 'json',
                 success: function (data) {
                     localStorage.setItem('coid',JSON.stringify(data.results.coid))
-					$('.curUser').html('欢迎' +data.results.realName+ '同学');
+					$('.curUser').html('【欢迎&nbsp;' +userInfo.userName+ '&nbsp;同学】');
 
 					//获取个体报告信息接口
                     var argsdata = {
