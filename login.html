@@ -225,12 +225,51 @@
                 mask.show();//显示遮罩
                 pop.classList.add('mui-active');
             })
-            var wgtVer = null;
+            var wgtVer = null;//app版本信息 - 日期
+            var versionCode = 99999999; //获取本地版本号
+            var versionCodeUpdate = 99999999 //获取服务器上版本号
 
             function plusReady() { // 获取本地应用资源版本号
                 plus.runtime.getProperty(plus.runtime.appid, function (inf) {
                     wgtVer = inf.version;
+                    versionCode = inf.versionCode;
                     version.innerHTML = '当前应用版本：' + wgtVer;
+
+                    /** 获取app版本信息 --  提醒是否更新功能 **/
+                    var appInfo = {
+                        // appName: 'priSchool',
+                        // appName: 'selfHelpEva',
+                        appName: 'controlHelpEva'
+                    }
+                    var taskData = {
+                        clazz: 'com.lattice.action.proxy.thirdparty.rest.api.MobileAppVersionAndUpdateProxy',
+                        service: 'getMobileAppVersion',
+                        args: JSON.stringify(appInfo)
+                    }
+                    $.ajax({
+                        type: 'POST',
+                        url: 'http://www.dweipsy.com/lattice/CommonActionThirdPartyProxy',
+                        data: taskData,
+                        dataType: 'json',
+                        success: function (data) {
+                            versionCodeUpdate = data.results.version.code;
+                            // versionCodeUpdate = 20200608;
+                            if(versionCodeUpdate > versionCode){
+                                var  btnArray=['暂不更新','前往更新'];
+                                mui.confirm("小朋友!软件出新版本啦，请前往更新!", '温馨提示:',btnArray, function(e) {
+                                    if(e.index === 1) {
+                                        //弹出更新窗口
+                                        mask.show();//显示遮罩
+                                        pop.classList.add('mui-active');
+                                    }else {
+                                        mui.toast('记得更新版本哦!')
+                                    }
+                                })
+                            }
+                        }
+                    });
+                    /** end **/
+
                 });
             }
             if (window.plus) {
@@ -252,28 +291,32 @@
             mui('.mui-table-view-cell').on('click', '#update', function () {
                 plus.runtime.getProperty(plus.runtime.appid, function (inf) {
                     ver = inf.version;
-                    $('.updateProDiv').css('display', 'block');
-                    $('#update').css('display', 'none');
-                    var wgtUrl = "http://www.dweipsy.com/mathbrain/Users/update/controlHelpEva/H5ABA7105.wgt";
-                    var dtask = plus.downloader.createDownload(wgtUrl, {}, function (d, status) {
-                        if (status === 200) {
-                            clearInterval(i);
-                            plus.nativeUI.toast("正在准备环境，请稍后...！");
-                            sleep(1000);
-                            $('#update').css('display', 'block');
-                            $('.updateProDiv').css('display', 'none');
-                            installWgt(d.filename); // 安装wgt包
-                        } else {
-                            plus.nativeUI.alert("下载更新包失败！");
-                        }
-                    });
-                    dtask.start();
-                    var i = setInterval(function () {
-                        var totalSize = dtask.totalSize;
-                        var downloadedSize = dtask.downloadedSize;
-                        $('#proDownFile').attr('value', downloadedSize);
-                        $('#proDownFile').attr('max', totalSize);
-                    }, 100); //1000为1秒钟
+                    if(versionCodeUpdate > versionCode){
+                        $('.updateProDiv').css('display', 'block');
+                        $('#update').css('display', 'none');
+                        var wgtUrl = "http://www.dweipsy.com/mathbrain/Users/update/controlHelpEva/H5ABA7105.wgt";
+                        var dtask = plus.downloader.createDownload(wgtUrl, {}, function (d, status) {
+                            if (status === 200) {
+                                clearInterval(i);
+                                plus.nativeUI.toast("正在准备环境，请稍后...！");
+                                sleep(1000);
+                                $('#update').css('display', 'block');
+                                $('.updateProDiv').css('display', 'none');
+                                installWgt(d.filename); // 安装wgt包
+                            } else {
+                                plus.nativeUI.alert("下载更新包失败！");
+                            }
+                        });
+                        dtask.start();
+                        var i = setInterval(function () {
+                            var totalSize = dtask.totalSize;
+                            var downloadedSize = dtask.downloadedSize;
+                            $('#proDownFile').attr('value', downloadedSize);
+                            $('#proDownFile').attr('max', totalSize);
+                        }, 100); //1000为1秒钟
+                    } else {
+                        mui.toast('当前版本已经是最新版本!')
+                    }
                 });
             });
             // 更新应用资源
@@ -286,8 +329,7 @@
                     });
                 }, function (e) {
                     plus.nativeUI.closeWaiting();
-                    // plus.nativeUI.alert("安装wgt文件失败[" + e.code + "]：" + e.message);
-                    plus.nativeUI.alert("当前版本已经是最新版本!");
+                    plus.nativeUI.alert("安装wgt文件失败[" + e.code + "]：" + e.message);
                 });
             }
 
@@ -316,7 +358,7 @@
                         };
                         $.ajax({
                             type: 'POST',
-                            url: 'http://www.dweipsy.com/lattice/CommonActionProxy',
+                            url: 'http://www.dweipsy.com/lattice/CommonActionThirdPartyProxy',
                             data: loginData,
                             dataType: 'json',
                             success: function (data) {
